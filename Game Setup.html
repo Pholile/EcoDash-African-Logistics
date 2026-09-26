@@ -3,14 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/Assets/logo.png">
-    <link src="style.css" type="text/stylesheet" ></link>
-    <title>Simulator Set-Up</title>
+    <link rel="icon" type="image/x-icon" href="Assets/logo.png">
+    <title>Game Setup - EcoDash</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
 
-    </header>
-    <script src="Game Setup.js"></script>
+  <!-- HEADER -->
+  <header class="header-band">
+    <div class="logo-box">
+      <img src="Assets/logo.png" alt="Eco Dash Logo" class="main-logo">
+    </div>
+    <div class="nav-buttons">
+      <a href="index.html" class="btn-nav">GO TO HOME</a>
+      <a href="Game.html" class="btn-nav">GO TO GAME</a>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <main class="main-layout">
+    
+    <!-- LEFT PANEL: SETUP -->
+    <section class="setup-panel">
+      <h1 class="title-neon">GAME SETUP</h1>
+      <h2 class="subtitle-purple">Select a Player</h2>
+      
+      <div class="avatar-selection">
+        <button class="avatar-btn"><img src="Assets/Avator 1.png" alt="Player 1"></button>
+        <button class="avatar-btn selected"><img src="Assets/Avator 2.png" alt="Player 2"></button>
+        <button class="avatar-btn"><img src="Assets/Avator 3.png" alt="Player 3"></button>
+        <button class="avatar-btn"><img src="Assets/Avator 4.png" alt="Player 4"></button>
+        <button class="avatar-btn"><img src="Assets/Avator 5.png" alt="Player 5"></button>
+      </div>
+
+      <form class="custom-form">
+        <!-- Name -->
+        <div class="form-row">
+          <label class="form-label">Enter Name:</label>
+          <div class="pill-container">
+            <div class="pill-input-wrapper" style="border-radius: 25px;">
+              <input type="text" id="playerName" class="pill-input" value="Pholile" maxlength="10" pattern="[a-zA-Z0-9]+">
+            </div>
+          </div>
+        </div>
+
+        <!-- Distance -->
+        <div class="form-row">
+          <label class="form-label">Distance</label>
+          <div class="pill-container">
+            <div class="pill-input-wrapper">
+              <input type="number" id="distanceInput" class="pill-input" value="90" min="1" max="100">
+            </div>
+          </div>
+        </div>
+
+        <!-- Destination -->
+        <div class="form-row">
+          <label class="form-label">Destination</label>
+          <div class="pill-container">
+            <div class="pill-input-wrapper">
+              <select id="destinationInput" class="pill-input">
+                <option value="Location 1">Location 1</option>
+                <option value="Location 2">Location 2</option>
+                <option value="Location 3">Location 3</option>
+                <option value="Location 4">Location 4</option>
+                <option value="Location 5">Location 5</option>
+                <option value="Location 6">Location 6</option>
+                <option value="Location 7">Location 7</option>
+                <option value="Location 8">Location 8</option>
+                <option value="Location 9">Location 9</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Number of Packages -->
+        <div class="form-row">
+          <label class="form-label">Number of Packages</label>
+          <div class="pill-container">
+            <div class="pill-input-wrapper">
+              <input type="number" id="packagesInput" class="pill-input" value="3" min="1" max="5">
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- RIGHT PANELS -->
+    <section class="right-panels">
+      
+      <!-- VEHICLE INFO -->
+      <div class="vehicle-panel">
+        <h2 class="vehicle-title">VEHICLE</h2>
+        <div class="vehicle-content">
+          <img id="vehicleImage" src="Assets/BX1200.png" alt="Vehicle" class="truck-icon" style="object-fit: contain; height: auto;">
+          <p class="vehicle-desc">We have selected<br>this delivery<br>vehicle for you.</p>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="summary-panel">
+        <div class="summary-item">
+          <img src="Assets/Avator 1.png" alt="Selected Player" class="summary-avatar">
+          <div class="name-badge">Pholile</div>
+        </div>
+        <div class="summary-item">
+          <img id="summaryVehicleImage" src="Assets/BX1200.png" alt="Summary Vehicle" class="summary-truck" style="object-fit: contain; height: auto;">
+          <div id="vehicleBadge" class="name-badge">BX1200</div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="Game Setup.js"></script>
 </body>
 </html>
