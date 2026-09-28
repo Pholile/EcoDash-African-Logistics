@@ -1,8 +1,422 @@
-canvas{
-    background-color: #ded0e6;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap');
 
+:root {
+    --bg-dark: #272b38;
+    --panel-bg: #5a6262;
+    --panel-bg-darker: #2f3e3e;
+    --neon-green: #00ff88;
+    --accent-purple: #4a1587;
+    --text-main: #ffffff;
+    --input-bg-green: #0a993a;
+    --btn-bg: #4a5452;
 }
 
-body{
-    margin : o;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #252938;
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Assets/background.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hedr-bnd {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 2px solid #1c1e29;
+    margin-bottom: 30px;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+}
+
+.main-logo {
+    width: 100px;
+    height: auto;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-nav {
+    background-color: var(--panel-bg);
+    color: var(--neon-green);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border: 2px solid var(--panel-bg);
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn-nav:hover {
+    border-color: #00ff8a;
+    text-shadow: #125c3a;
+}
+
+.main-layout {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 40px 40px;
+}
+
+.stup-panl {
+    flex: 1;
+    background-color: #5c686d;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+.title-neon {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-green);
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.subtitle-purple {
+    font-size: 2rem;
+    color: var(--accent-purple);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar-selection {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.avatr-bttn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.avatr-bttn img {
+    height: 200px;
+    object-fit: contain;
+}
+
+.avatr-bttn:hover {
+    transform: scale(1.1);
+}
+
+.custm-frm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-label {
+    font-size: 1.2rem;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.pil-cont {
+    display: flex;
+    align-items: center;
+    background-color: var(--input-bg-green);
+    border-radius: 30px;
+    padding: 4px;
+    width: 250px;
+    height: 40px;
+}
+
+.pill-input-wrapper {
+    background-color: var(--accent-purple);
+    border-radius: 25px;
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.pill-input {
+    background: transparent;
+    border: none;
+    color: var(--neon-green);
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    outline: none;
+}
+
+.pill-input::placeholder {
+    color: rgba(0, 255, 136, 0.5);
+}
+
+.spin-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.spin-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 0.8;
+    padding: 2px;
+}
+
+.spin-btn:hover {
+    color: var(--neon-green);
+}
+
+.right-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 0.8;
+}
+
+.vehicle-panel {
+    background-color: #5c686d;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+.vehicle-title {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-green);
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.vehicle-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.truck-icon {
+    width: 140px;
+    fill: #342a59;
+}
+
+.vehicle-desc {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.summary-panel {
+    background-color: #5c686d;
+    border-radius: 30px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    min-height: 250px;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.summary-avatar {
+    height: 140px;
+    object-fit: contain;
+}
+
+.summary-truck {
+    width: 160px;
+    fill: var(--neon-green);
+}
+
+.name-badge {
+    background-color: var(--accent-purple);
+    color: var(--neon-green);
+    padding: 8px 30px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.instruction-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.instruction-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.inst-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.controls-col {
+    flex: 0.8;
+    justify-content: center;
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-key {
+    width: 50px;
+    height: 50px;
+    background-color: #5c686d;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.control-label {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.vertical-divider {
+    width: 2px;
+    background-image: linear-gradient(to bottom, transparent 10%, #111 10%, #111 90%, transparent 90%);
+    background-size: 100% 20px;
+    opacity: 0.3;
+}
+
+.action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.action-pill {
+    background-color: #2b3040;
+    color: #fff;
+    padding: 10px 40px;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.action-desc {
+    font-size: 1rem;
+    color: #d1d5db;
+    line-height: 1.4;
+}
+
+.section-divider {
+    border: 0;
+    height: 2px;
+    background-color: #2b3040;
+    margin: 10px 0;
+}
+
+.signs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.sign-img {
+    height: 50px;
+    object-fit: contain;
+}
+
+.mechanic-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.mechanic-icon {
+    width: 80px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.mechanic-desc {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.text-red {
+    color: #ff4d4d;
 }
