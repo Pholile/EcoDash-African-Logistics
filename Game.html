@@ -1,17 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/Assets/logo.png">
-    <link src="Game.css" type="text/stylesheet"  ></link>
-    <title>EcoDash Simulator</title>
+    <title>Eco Dash Simulator - Live Simulation</title>
+    <link rel="stylesheet" href="game.css">
 </head>
+
 <body>
-    
-
-
-    <canvas id="canvas"></canvas>
+    <div class="game-container">
+        <div class="hd-panl">
+            <div class="hud-item">
+                <span class="hud-label">BATTERY</span>
+                <div class="battery-bar-container">
+                    <div id="batryFil" class="battery-fill"></div>
+                </div>
+                <span id="batryTxt" class="hud-value">100%</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">SPEED</span>
+                <span id="spedDisp" class="hud-value">0 km/h</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">SCORE</span>
+                <span id="scorDisp" class="hud-value">0</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">PACKAGES</span>
+                <span id="packgDisp" class="hud-value">0</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">HORN</span>
+                <span id="hrnInd" class="hud-status">READY</span>
+            </div>
+        </div>
+        <button id="chargBttn" class="charge-btn">
+            <img src="Assets/station.png" alt="Station Icon" class="charge-btn-icon">
+            <span>Find charging stetion</span>
+        </button>
+        <div id="chargNotif" class="gam-notif hidden">
+            We are now headin to the nearest charging station
+        </div>
+        <div id="inGamWrning" class="gam-notif hidden"></div>
+        <div id="plyrProfilBaner" class="profile-banner hidden">
+            <h2>PLAYER PROFILE</h2>
+            <img id="profileAvatar" src="Assets/male_avatar.png" alt="Avatar">
+            <h3 id="profileName">Name</h3>
+            <hr>
+            <h4>SELECTED VEHICLE</h4>
+            <img id="profileVehicle" src="Assets/BX600.png" alt="Vehicle">
+            <h3 id="profileVehicleName">Vehicle Name</h3>
+            <hr>
+            <p id="profileSessionHits">Current Session Hits: 0/4</p>
+            <p id="profileGlobalDamage" class="global-damage">Global Damage: 0</p>
+        </div>
+        <div id="scorCrd" class="score-card hidden">
+            <p>Score: <span id="cardScore">0</span></p>
+            <p>Recent: <span id="cardRecent">None</span></p>
+            <div id="scoreCardExpanded" class="score-expanded">
+                <p>Attempts: <span id="cardAttempts">0</span></p>
+                <p>Success: <span id="cardSuccess">0</span></p>
+                <p id="cardDamageText">Damage Hits: <span id="cardDamage">0/4</span></p>
+            </div>
+        </div>
+        <canvas id="gamCanv"></canvas>
+        <div id="preGamOvrly" class="strt-ovrly">
+            <div class="start-top-bar">
+                <img src="Assets/logo.png" alt="EcoDash" class="start-logo">
+                <a href="index.html" class="start-nav-btn">GO TO HOME</a>
+                <a href="Game Setup.html" class="start-nav-btn">GO TO GAME SETUP</a>
+            </div>
+            <div class="start-content">
+                <div class="start-selection-card">
+                    <div class="start-avatar-box">
+                        <img id="startAvatarImg" src="Assets/male_avatar.png" alt="Avatar">
+                        <div id="startPlayerName" class="start-badge">Player</div>
+                    </div>
+                    <div class="start-vehicle-box">
+                        <img id="startVehicleImg" src="Assets/BX600.png" alt="Vehicle">
+                        <div id="startVehicleName" class="start-badge">BX600</div>
+                    </div>
+                </div>
+                <div class="start-instructions">
+                    We have fully charged your vehicle. Proceed to start. Move with the arrows. Avoid collision and try
+                    your best to deliver the goods on time.
+                </div>
+            </div>
+            <button id="strtGamBttn" class="btn-strt-gam">START GAME</button>
+        </div>
+        <div id="pausModl" class="modal-overlay hidden">
+            <div class="gam-notif">
+                <h2>GAME PAUSED</h2>
+                <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center;">
+                    <button id="resumBttn" class="btn-replay">Keep Playing</button>
+                    <button id="qitBttn" class="btn-replay"
+                        style="background-color: var(--alert-red); color: white; border: 2px solid darkred;">QUIT</button>
+                </div>
+            </div>
+        </div>
+        <div id="gamOvrModl" class="modal-overlay hidden">
+            <div class="gam-notif">
+                <h2 id="modlTitl">MISSION ENDED</h2>
+                <p id="modlReasn">Battery drained along the unpaved route.</p>
+                <p class="final-score">Final Score: <span id="finlScor">0</span></p>
+                <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center;">
+                    <button id="restrtBttn" class="btn-replay">Replay Mission</button>
+                    <button id="qitGamOvrBttn" class="btn-replay"
+                        style="background-color: var(--accent-purple); color: white; border: none;">Quit</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="Game.js"></script>
 </body>
+
 </html>
