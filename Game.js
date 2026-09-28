@@ -1,9 +1,18 @@
+// ==========================================
+// The whole and canvas js :|
+// ==========================================
+
+// 
 var canvas = document.getElementById('gamCanv');
 var ctx = canvas.getContext('2d');
+
+//background cat logo and the stop sign
 var fishImg = new Image();
 fishImg.src = 'Assets/Fish.png';
 var stopSignImg = new Image();
 stopSignImg.src = 'Assets/Stop Sign.png';
+
+//preloaded audios
 var hornSound = new Audio('Assets/Car Horn.mp3');
 var failedSound = new Audio('Assets/failed.mp3');
 var successSound = new Audio('Assets/Sucess.mp3');
@@ -11,8 +20,14 @@ var rainySound = new Audio('Assets/Rainy.mp3');
 var niceSound = new Audio('Assets/Nice.mp3');
 var sqwishSound = new Audio('Assets/Sqwish.mp3');
 var windySound = new Audio('Assets/Windy.mp3');
+
+//looping for wind and rain
 rainySound.loop = true;
 windySound.loop = true;
+
+//Helper function to play sound effects from the beginning, handling blocked playback errors
+//try 3; added "carY = canvas.height - 150;"
+ // "roadCenterX = (canvas.width - profileWidth) / 2;"
 function playSound(audio) {
   audio.currentTime = 0;
   audio.play().catch(e => console.log("Audio play blocked:", e));
@@ -28,6 +43,9 @@ var profileKey = `${playerName}_${playerAvatar}_globalDamage`;
 var globalDamage = parseInt(localStorage.getItem(profileKey) || '0', 10);
 var profileWidth = 320;
 var roadCenterX = 0;
+
+
+//resizing of th canvas based on window size
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -88,6 +106,9 @@ var isRaining = false;
 var deliveriesAttempted = 0;
 var deliveriesSuccess = 0;
 var lastDeliveryText = "None";
+
+
+//the notifications for the gameplay itself; like "drop off close n stuff"
 function showWarning(text) {
   var warningEl = document.getElementById('inGamWrning');
   if (warningEl) {
@@ -146,6 +167,7 @@ if (chargBttn) {
 }
 resizeCanvas();
 carX = roadCenterX;
+//randomly adding obstacles, signs, and packages
 function spawnObjects() {
   if (!isGamStrated || isGamOvr || isPaused) return;
   frameCount++;
@@ -304,34 +326,46 @@ function drawWind() {
   });
   ctx.stroke();
 }
+//thse loop mechanics handling physics, movement, and collisions
 function updatPhysic() {
+  //whne the game hasn't started, is over, or is paused, do not update physics
   if (!isGamStrated || isGamOvr || isPaused) return;
+  
+  //wind pushing the car to the left
   if (windActive) {
     carX -= 0.4;
   }
+  
+  //the charging station
   if (isCharging) {
     if (chargingPhase === 0) {
+      //first driving off the screen to the side; to create the illusion of charging at a station
       carVelocityX = -1;
       carX += carVelocityX;
-      carSpeed *= 0.98;
+      carSpeed *= 0.98; //Gradually slow down
       if (carX <= roadCenterX - 250) {
+        //now the car starts charging up
         chargingPhase = 1;
-        chargingTimer = 180;
+        chargingTimer = 180; //setting teh  timer for how long to charge
         carSpeed = 0;
         carVelocityX = 0;
       }
     } else if (chargingPhase === 1) {
+      //car is currently charging
       chargingTimer--;
-      battery += 0.5;
-      if (battery > 100) battery = 100;
+      battery += 0.5; //increase battery percent
+      if (battery > 100) battery = 100; //ending at 1005
       if (chargingTimer <= 0) {
+        //When timer runs out, transition to driving back onto the road
         chargingPhase = 2;
       }
     } else if (chargingPhase === 2) {
+      //lastely drive the car back onto the road
       carVelocityX = 1;
       carX += carVelocityX;
       carSpeed += acceleration;
       if (carX >= roadCenterX) {
+        //charge is doen, back to contrillong
         isCharging = false;
         carVelocityX = 0;
         var notification = document.getElementById('chargNotif');
@@ -343,18 +377,31 @@ function updatPhysic() {
       }
     }
   } else {
+
+
+    //back to normal driving controls (when not charging)
+    
+    //let and right movement handling
     if (keys['ArrowLeft']) carVelocityX -= 0.5;
     if (keys['ArrowRight']) carVelocityX += 0.5;
+    
+    //Applying the friction to slowly stop horizontal movement when keys are released
     carVelocityX *= friction;
     carX += carVelocityX;
+    
+    //stopping the car from driving off the screen
     if (carX < carWidth) carX = carWidth;
     if (carX > canvas.width - profileWidth - carWidth) carX = canvas.width - profileWidth - carWidth;
+    
+    //forwardn and slow down moveing (Speed) handling
     if (keys['ArrowUp']) {
+      //accelerate the car up to the max speed
       carSpeed += acceleration;
-      var currentMax = windActive ? maxSpeed * 0.75 : maxSpeed;
+      var currentMax = windActive ? maxSpeed * 0.75 : maxSpeed; // Wind reduces max speed
       if (carSpeed > currentMax) carSpeed = currentMax;
-      battery -= 0.05;
+      battery -= 0.05; // Accelerating drains battery faster
     } else if (keys['ArrowDown']) {
+      //slow down the car
       carSpeed -= braking;
       if (carSpeed < 0) carSpeed = 0;
     } else {
@@ -468,6 +515,7 @@ function updatPhysic() {
   updateHUD();
   updateWind();
 }
+// Renders the sky gradient to create the illusion o0f  day/night cycles
 function renderSky() {
   var playAreaWidth = canvas.width - profileWidth;
   var timeCycle = (Date.now() % 120000) / 120000;
@@ -491,6 +539,7 @@ function renderSky() {
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, playAreaWidth, canvas.height);
 }
+//draw loop rendering the road, objects, and UI elements
 function render() {
   renderSky();
   var playAreaWidth = canvas.width - profileWidth;
@@ -606,6 +655,7 @@ function render() {
     });
   }
 }
+//cahngeing the Heads Up Display(HUD) with current game state variables
 function updateHUD() {
   var batryFil = document.getElementById('batryFil');
   if (batryFil) batryFil.style.width = `${Math.max(0, battery)}%`;
@@ -636,6 +686,7 @@ function updateHUD() {
   var pGlobalDamage = document.getElementById('profileGlobalDamage');
   if (pGlobalDamage) pGlobalDamage.textContent = "Global Damage: " + globalDamage;
 }
+//for the logic when the player fails the mission
 function triggerGameOver(reason) {
   isGamOvr = true;
   playSound(failedSound);
@@ -647,6 +698,7 @@ function triggerGameOver(reason) {
   document.getElementById('finlScor').textContent = Math.floor(score);
   document.getElementById('gamOvrModl').classList.remove('hidden');
 }
+//the logic when the player successfully completes the route
 function triggerGameWin() {
   isGamOvr = true;
   carSpeed = 0;

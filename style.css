@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap');
 
+/*overall pallete colours*/
 :root {
     --bg-dark: #272b38;
     --panel-bg: #5a6262;
@@ -44,6 +45,7 @@ body::before {
     pointer-events: none;
 }
 
+/*header css starts here*/
 .hedr-bnd {
     width: 100%;
     max-width: 1200px;
@@ -90,6 +92,7 @@ body::before {
     text-shadow: #125c3a;
 }
 
+/*main section css starts here*/
 .main-layout {
     display: flex;
     gap: 30px;
@@ -146,6 +149,7 @@ body::before {
     transform: scale(1.1);
 }
 
+/*the form css */
 .custm-frm {
     display: flex;
     flex-direction: column;
@@ -224,6 +228,7 @@ body::before {
     color: var(--neon-green);
 }
 
+/*player and car preview*/
 .right-panels {
     display: flex;
     flex-direction: column;

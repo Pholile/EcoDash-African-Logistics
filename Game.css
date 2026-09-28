@@ -1,3 +1,4 @@
+/*core theme colours*/
 :root {
     --bg-color: #06090e;
     --bg-dark: #1c1e29;
@@ -27,6 +28,7 @@ body {
     overflow: hidden;
 }
 
+/* Heads Up Display(HUD)*/
 .hd-panl {
     position: absolute;
     top: 0;
@@ -90,6 +92,7 @@ canvas {
     position: relative;
 }
 
+/*overla styles*/
 .modal-overlay {
     position: absolute;
     top: 0;
@@ -155,6 +158,7 @@ canvas {
     background: #0f4e30;
 }
 
+/*Playe selects on the right, full banner css*/
 .profile-banner {
     position: absolute;
     top: 0;
@@ -210,6 +214,7 @@ canvas {
     font-weight: bold;
 }
 
+/* Interactive Score Card Styles */
 .score-card {
     position: absolute;
     bottom: 20px;

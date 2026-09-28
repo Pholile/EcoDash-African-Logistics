@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Main Container for Game Elements -->
     <div class="game-container">
         <div class="hd-panl">
             <div class="hud-item">
@@ -36,6 +37,7 @@
                 <span id="hrnInd" class="hud-status">READY</span>
             </div>
         </div>
+        <!-- Charging Station Interaction Button -->
         <button id="chargBttn" class="charge-btn">
             <img src="Assets/station.png" alt="Station Icon" class="charge-btn-icon">
             <span>Find charging stetion</span>
@@ -44,6 +46,7 @@
             We are now headin to the nearest charging station
         </div>
         <div id="inGamWrning" class="gam-notif hidden"></div>
+        <!-- Player Profile Banner Sidebar -->
         <div id="plyrProfilBaner" class="profile-banner hidden">
             <h2>PLAYER PROFILE</h2>
             <img id="profileAvatar" src="Assets/male_avatar.png" alt="Avatar">
@@ -65,6 +68,7 @@
                 <p id="cardDamageText">Damage Hits: <span id="cardDamage">0/4</span></p>
             </div>
         </div>
+        <!-- Primary Game Canvas Element -->
         <canvas id="gamCanv"></canvas>
         <div id="preGamOvrly" class="strt-ovrly">
             <div class="start-top-bar">
@@ -100,6 +104,7 @@
                 </div>
             </div>
         </div>
+        <!-- Game Over Modal Dialog -->
         <div id="gamOvrModl" class="modal-overlay hidden">
             <div class="gam-notif">
                 <h2 id="modlTitl">MISSION ENDED</h2>
