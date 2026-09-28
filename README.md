@@ -8,53 +8,62 @@
 </p>
 
 <p align="center">
-  <font color="#da70d6"><b>An interactive 2D HTML5 Canvas simulation addressing real-world African infrastructure and logistics challenges.</b></font>
+  <font color="#da70d6"><b>An interactive 2D HTML5 Canvas simulation addressing poor road infrastructure in rural Zambia.</b></font>
 </p>
 
 ---
 
 ##  Project Overview
 
-**EcoDash** is a 2D web-based simulation modeling the transport of essential supplies (medical goods, food, educational resources) across African terrain using solar-powered electric vehicles and drones. Built with Vanilla JavaScript and HTML5 Canvas, the application models vector physics, energy management, load-shedding conditions, and obstacle navigation.
+**EcoDash** is a 2D web-based simulation modeling the transport of essential supplies (medical goods, food, educational resources) across Zambian terrain using solar-powered electric vehicles. Built with Vanilla JavaScript, CSS3 and HTML5 Canvas, the application models vector physics, energy management, strong winds, and obstacle navigation.
 
 ---
 
 ##  Tech Stack
 
 * **Rendering Engine**: HTML5 Canvas API
-* **Styling**: CSS3 (Pink & Neon Purple UI Palette)
-* **Logic**: Vanilla JavaScript (ES6+ Object-Oriented Programming)
-
+* **Styling**: CSS3
+* **Logic**: Vanilla JavaScript
 ---
 
+##  Final Design 
+
+* **Overall**: Purple and Green will be the accent colours throughout the site
+* **Theme**: The theme will be constantly dark and unchangeable. With dark grey-blue accent.
+* **Font**: Overall the font on the site will be simple for visual aid.
+* **Game Colour Palette**
+
+| Deep Purple | Neon Mint | Electric Violet | Sea Green |
+| :---: | :---: | :---: | :---: |
+| <img src="https://placehold.co/100x100/52349e/52349e.png" width="100" height="100" alt="Deep Purple"> | <img src="https://placehold.co/100x100/00ff7a/00ff7a.png" width="100" height="100" alt="Neon Mint"> | <img src="https://placehold.co/100x100/8d52ff/8d52ff.png" width="100" height="100" alt="Electric Violet"> | <img src="https://placehold.co/100x100/38ae7b/38ae7b.png" width="100" height="100" alt="Sea Green"> |
+| `#52349E` | `#00FF7A` | `#8D52FF` | `#38AE7B` |
 ##  Key Features
 
 | Feature Category | Implementation Details |
 | :--- | :--- |
 | ** Physics & Movement** | Directional velocity, acceleration, drag, and trigonometric math calculations (`Math.cos`, `Math.sin`). |
-| ** Solar Microgrid** | Dynamic battery consumption meter with solar recharging zones[cite: 1]. |
-| ** Infrastructure Hazards** | Dynamic collision handling for load-shedding blackouts, potholes, rivers, and wildlife crossings[cite: 1]. |
-| ** Original Feature** | Custom-coded canvas particle burst system on battery recharge (developed completely independent of AI assistance)[cite: 1]. |
-| ** High Score Persistence** | LocalStorage integration tracking high scores, total distance, and energy efficiency[cite: 1]. |
+| ** Charging mood** | Solar powered battery that refills once the car stops and recharges. |
+| ** Infrastructure Identifier** | Identify foreign objects and road limits and notifies the driver if collision has occured. |
+| ** Project Originality** | Project structure is a replica of a project called that was a game project. |
+| ** Score keeping** | Local Storage is used to save the latest game settings and score board, with historical logs like collisions and failed missions. |
 
 ---
 
-##  Initial Project Folder Structure
+##  Final Project Folder Structure
 
 ```text
-EcoDash-African-Logistics/
+EcoDash/
 ├── index.html
+├── Game Setup.html
+├── Game.html
 ├── css/
-│   └── style.css
+│   ├── style.css
+│   └── Game.css
 ├── js/
-│   ├── main.js
-│   ├── vehicle.js
-│   ├── obstacles.js
-│   └── particles.js
+│   ├── Game Setup.js
+│   └── Game.js
 ├── assets/
-│   ├── audio/
-│   └── images/
-├── docs/
+├── task1/
 │   ├── Wireframe.pdf
-│   └── African_Context_Report.pdf
+│   └── Documantation.pdf
 └── README.md
